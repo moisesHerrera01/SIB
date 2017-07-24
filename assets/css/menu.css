@@ -1,0 +1,364 @@
+.cbp-vimenu {
+	position: fixed;
+	overflow: hidden;
+	top: 0;
+	left: 0;
+	height: 100%;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	background: #272D33;
+}
+
+.cbp-submenu {
+	display: none;
+	position: fixed;
+	overflow: hidden;
+	top: 0;
+	left: 0;
+	height: 100%;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	background: #272D33;
+}
+
+.cbp-vimenu-oc {
+	display: none;
+	position: fixed;
+	overflow: hidden;
+	min-width: 10.65em;
+	height: 3em;
+	padding-left: 5px;
+	padding-right: 2px;
+	margin-top: -1px;
+	left: 3em;
+	text-align: left;
+	background-color: inherit;
+	border-bottom: 1px solid rgba(0,0,0,0.05);
+	z-index: 10000;
+}
+
+.cbp-vimenu li a,
+.cbp-submenu li a {
+	display: block;
+	height: 3em;
+	width: 3em;
+	line-height: 3em;
+	text-align: center;
+	color: #999;
+	background-color: #272D33;
+	position: relative;
+	border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.cbp-vimenu li:first-child a,
+.cbp-vimenu li a:hover,
+.cbp-submenu li:first-child a,
+.cbp-submenu li a:hover {
+	background-color: #0091D2;
+	color: #fff;
+}
+
+.cbp-vimenu li a:hover,
+.cbp-submenu li a:hover {
+  border: solid 2px #fff;
+	border-right: 0px;
+}
+
+.cbp-vimenu li a:hover span,
+.cbp-submenu li a:hover span {
+  border: solid 1px #fff;
+	border-left: 0px;
+}
+
+.cbp-vimenu li a:before,
+.cbp-submenu li a:before {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	text-indent: 0em;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	font-size: 1em;
+	-webkit-font-smoothing: antialiased;
+}
+
+.hbp-vimenu {
+	position: fixed;
+	display: block;
+	width: calc(100% - 3em);
+	height: 3em;
+	top: 0;
+	left: 3em;
+	list-style: none;
+	background-color: #0091D2;
+	color: #fff;
+	text-align: right;
+	z-index: 100;
+	border-left: 1px solid rgba(0,0,0,0.05);
+}
+
+.hbp-vimenu li {
+	display: inline;
+	position: relative;
+	top: 0.4em;
+	padding: 0.5em;
+}
+
+.hbp-vimenu li:first-child {
+	float: left;
+	left: -2.25em;
+	top: -0.45em;
+  font-family: 'poster';
+  font-size: 1.5em;
+  letter-spacing: 1px;
+}
+
+.hbp-vimenu li:nth-child(3) {
+	padding-right: 1em;
+	border-left: 2px solid;
+}
+
+.hbp-vimenu li a,
+.hbp-vimenu li span {
+	color: #fff;
+}
+
+#pull {
+	display: none;
+}
+
+/*
+ * Notoficacion
+ */
+
+.container-area-notice {
+	position: fixed;
+	display: none;
+	background-color: #EDEFF0;
+	max-height: 20em;
+	width: 28em;
+	top: 3.1em;
+	right: 1em;
+	padding: 0.7em;
+	border: 1px solid #999;
+	box-shadow: 0 2px 10px #888888;
+	overflow-x: hidden;
+  z-index: 1000;
+}
+
+.tgs {
+	position: fixed;
+	display: none;
+	top: 2.5em;
+	right: 6.7em;
+  width: 0;
+	height: 0;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-bottom: 10px solid #EDEFF0;
+	z-index: 10000;
+}
+
+.content-no-notice {
+	color: #999;
+	text-align: center;
+	margin: 1em;
+	padding: 1em;
+}
+
+.cont-icon {
+	display: inline-block;
+	height: 3.5em;
+	width: 3.5em;
+}
+
+.cont-icon:before {
+	position: absolute;
+  font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	text-indent: 0em;
+	font-size: 2.5em;
+	-webkit-font-smoothing: antialiased;
+}
+
+.cont-notice {
+	display: inline-block;
+	position: absolute;
+	width: 70%;
+	left: 18%;
+}
+
+
+.alert-notification {
+	background-color: #fff;
+	box-shadow: 0 2px 2px #888888;
+	border: 1px solid #999;
+}
+
+.content-area-notice .alert {
+	margin-bottom: 5px;
+}
+
+/*
+ * AYUDA
+ */
+
+.tgsh {
+	position: fixed;
+	display: none;
+	top: 2.5em;
+	right: 2.6em;
+  width: 0;
+	height: 0;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-bottom: 10px solid #EDEFF0;
+	z-index: 10000;
+}
+
+.container-area-help {
+	position: fixed;
+	display: none;
+	background-color: #EDEFF0;
+	max-height: 20em;
+	width: 20em;
+	top: 3.1em;
+	right: 1em;
+	border: 1px solid #999;
+	box-shadow: 0 2px 10px #888888;
+	overflow-x: hidden;
+  z-index: 1000;
+}
+
+.content-box-help {
+	background-color: #fff;
+	border-top: 1px solid #999;
+	height: 2.5em;
+	padding: 0.5em 1.5em;
+}
+
+.content-box-help:hover {
+	cursor: pointer;
+	background-color: #DFE3E4;
+}
+
+.cont-txt-help {
+	position: relative;
+	bottom: 0.15em;
+}
+
+.cont-icon-help {
+	height: 1.5em;
+	margin-right: 1em;
+	width: 1.5em;
+}
+
+.cont-icon-help:before {
+  font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	text-indent: 0em;
+	font-size: 1.1em;
+	-webkit-font-smoothing: antialiased;
+}
+
+.title-area {
+	color: #888888;
+	font-size: 1.5em;
+	margin-bottom: 0.2em;
+	text-align: center;
+}
+
+.link {
+	color: #72a8e7;
+	text-decoration: none ;
+	cursor: pointer;
+}
+
+.link:hover {
+    color: #3180dc;
+    text-decoration: none ;
+    cursor: pointer;
+}
+
+/*
+ * LOGOS
+ */
+
+ .icon-bug:before {
+   content: "\e999";
+ }
+
+/* Example for media query (depends on total height of menu) */
+@media (max-width: 767px) {
+
+	#pull {
+		position: fixed;
+		top: 0;
+		left: 0;
+		display: block;
+		height: 3em;
+		width: 3em;
+		line-height: 3em;
+		color: #999;
+		text-align: center;
+		background-color: #0091D2;
+	}
+
+	#pull:before {
+		font-family: 'icomoon';
+		speak: none;
+		font-style: normal;
+		font-weight: normal;
+		text-indent: 0em;
+		font-size: 1.4em;
+		-webkit-font-smoothing: antialiased;
+	}
+
+	#pull:hover {
+		color: #fff;
+	}
+
+	.cbp-vimenu, .cbp-submenu {
+		display: none;
+		width: 100%;
+		height: calc(100% - 3em);
+		margin-top: 3em;
+		z-index: 1000;
+		overflow-y: visible;
+	}
+
+	.cbp-vimenu li:first-child, .cbp-submenu li:first-child {
+		display: none;
+	}
+
+	.cbp-vimenu-oc {
+		display: block;
+		position: absolute;
+		width: 100%;
+		height: 3em;
+		padding-left: 7px;
+		margin-top: -1px;
+		margin-bottom: -1px;
+		left: 2.87em;
+		text-align: left;
+		background-color: inherit;
+		border-bottom: 1px solid rgba(0,0,0,0.05);
+		z-index: 1000;
+	}
+
+	.content-area-notice {
+		width: 100%;
+		right: 0;
+	}
+
+}
