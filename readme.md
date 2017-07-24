@@ -1,3 +1,3 @@
-# QUE ES SICBAF
+# QUE ES SIB
 
-Es un sistema integral de bodega, activo fijo y compras para el MTPS.
+Sistema Informático de Bodega Institucional para el INSAFOCOOP
