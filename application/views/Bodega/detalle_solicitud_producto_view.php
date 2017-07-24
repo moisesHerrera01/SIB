@@ -28,7 +28,7 @@
       }
     }
 
-    elseif ($USER['rol'] == 'ADMINISTRADOR SICBAF'){
+    elseif ($USER['rol'] == 'ADMINISTRADOR SIB'){
       if ($nivel == 1 || $nivel == 2 || $nivel == 3){
         $bandera = 1;
       } else {

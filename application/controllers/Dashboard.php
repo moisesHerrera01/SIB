@@ -35,8 +35,7 @@ class Dashboard extends CI_Controller {
 
   public function __construct() {
     parent::__construct();
-    $this->load->model(array('Bodega/Solicitud_Model', 'Bodega/Factura_Model', 'Compras/Solicitud_Compra_Model',
-                    'Bodega/Producto', 'Compras/Compromiso_Presupuestario_Model', 'ActivoFijo/Datos_Comunes_Model'));
+    $this->load->model(array('Bodega/Solicitud_Model','Bodega/Factura_Model','Bodega/Producto'));
   }
 
   public function index(){
@@ -49,7 +48,7 @@ class Dashboard extends CI_Controller {
         case 'JEFE BODEGA':
           $data['dhb'] = $this->load->view('dashboard/dhb_jefe_bodega', '', true);
           break;
-        case 'USUARIO SICBAF':
+        case 'USUARIO SIB':
           $data['dhb'] = $this->load->view('dashboard/dhb_usuario', '', true);
           break;
         case 'JEFE UNIDAD':
@@ -154,7 +153,7 @@ class Dashboard extends CI_Controller {
     echo json_encode($com->total + $bod->total);
   }
   /*
-  * USUARIO SICBAF
+  * USUARIO SIB
   */
 
   public function obtenerSolicitudesCompraBodegaUsuario() {

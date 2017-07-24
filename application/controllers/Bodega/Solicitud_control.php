@@ -64,7 +64,7 @@ class Solicitud_control extends CI_Controller {
         $nivel[] = 4;
         $nivel[] = 9;
         $seccion = $USER['id_seccion'];
-      } elseif ($USER['rol'] == 'ADMINISTRADOR SICBAF') {
+      } elseif ($USER['rol'] == 'ADMINISTRADOR SIB') {
         $nivel[] = 0;
         $nivel[] = 1;
         $nivel[] = 2;
@@ -107,7 +107,7 @@ class Solicitud_control extends CI_Controller {
             $seccion = $this->Solicitud_Model->obtenerSeccion($sol->id_seccion);
             $fuente = $this->Fuentefondos_model->obtenerFuente($sol->id_fuentes);
 
-            if ($USER['rol'] == 'ADMINISTRADOR SICBAF') {
+            if ($USER['rol'] == 'ADMINISTRADOR SIB') {
               if ($sol->nivel_solicitud == 0 ||  $sol->nivel_solicitud == 3 || $sol->nivel_solicitud == 4 || $sol->nivel_solicitud == 9){
                 $onClick = "llenarFormulario('solicitud', ['id', 'fecha_solicitud', 'id_seccion', 'numero_solicitud', 'nivel'],
                             [$sol->id_solicitud, '$sol->fecha_solicitud', '$seccion', '$sol->numero_solicitud',

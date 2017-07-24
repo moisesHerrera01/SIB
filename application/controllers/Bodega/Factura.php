@@ -11,8 +11,7 @@ class Factura extends CI_Controller {
     $this->load->helper(array('form', 'paginacion'));
     $this->load->library('table');
     $this->load->model(array('Bodega/Factura_Model', 'Bodega/Proveedor', 'Bodega/Fuentefondos_model',
-    'Bodega/Solicitud_Model','Bodega/Detalle_solicitud_producto_model','Bodega/Detallefactura_Model',
-  'Compras/Compromiso_Presupuestario_Model'));
+    'Bodega/Solicitud_Model','Bodega/Detalle_solicitud_producto_model','Bodega/Detallefactura_Model'));
   }
 
   public function index(){
@@ -176,7 +175,7 @@ class Factura extends CI_Controller {
             $rastrea['id_registro']=$this->User_model->obtenerSiguienteIdModuloIncrement('sic_factura');
             $this->Factura_Model->insertarFactura($data);
             $this->User_model->insertarRastreabilidad($rastrea);
-            $detalles = $this->Compromiso_Presupuestario_Model->obtenerDetalleOrden($data['numero_compromiso']);
+            //$detalles = $this->Compromiso_Presupuestario_Model->obtenerDetalleOrden($data['numero_compromiso']);
             foreach ($detalles as $det) {
                 $datos = array(
                   'id_factura' => $rastrea['id_registro'],

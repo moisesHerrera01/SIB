@@ -62,7 +62,7 @@ class Retiro extends CI_Controller {
           $pagination = '';
           $registros = FALSE;
 
-          if ($USER['rol'] == 'COLABORADOR BODEGA' || $USER['rol'] == 'JEFE BODEGA' || $USER['rol'] == 'TECNICO BODEGA' || $USER['rol'] == 'ADMINISTRADOR SICBAF' ) {
+          if ($USER['rol'] == 'COLABORADOR BODEGA' || $USER['rol'] == 'JEFE BODEGA' || $USER['rol'] == 'TECNICO BODEGA' || $USER['rol'] == 'ADMINISTRADOR SIB' ) {
 
             $this->table->set_heading('Id','Número', 'Sección', 'Fuente Fondo','Estado','Prioridad','Comenatario Jefe Unidad','Comentario Director','Editar','Detalle','Liquidar','Acta');
 

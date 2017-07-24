@@ -48,7 +48,7 @@
                ->join('org_seccion s','i.id_seccion=s.id_seccion')
                ->where('usuario', $username)
                ->where('i.fecha_inicio',$info->fecha_inicio)
-               ->where('c.id_sistema = 13');
+               ->where('c.id_sistema = 1');
       $query=$this->db->get();
       if ($query->num_rows() > 0) {
         return $query->row();
@@ -91,7 +91,7 @@
              ->join('org_rol c', 'b.id_rol = c.id_rol')
              ->join('org_usuario d', 'd.id_usuario = '.$id_usuario )
              ->join('org_usuario_rol e', 'd.id_usuario = e.id_usuario')
-             ->where('a.id_sistema', 13)
+             ->where('a.id_sistema', 1)
              ->where('a.id_modulo', $id_modulo)
              ->where('c.id_rol = e.id_rol')
              ->where('b.id_permiso', $id_permiso);
@@ -181,7 +181,7 @@
            ->from("org_rol a")
            ->join("org_rol_modulo_permiso b", "a.id_rol = b.id_rol")
            ->join("org_modulo c", "b.id_modulo = c.id_modulo")
-           ->where("c.id_sistema = 13")
+           ->where("c.id_sistema = 1")
            ->group_by("a.id_rol");
        $query = $this->db->get();
        if ($query->num_rows() > 0) {
@@ -286,7 +286,7 @@
               ->join('org_modulo m','m.id_modulo=rmp.id_modulo')
               ->group_by('ur.id_usuario')
               ->where('u.estado',1)
-              ->where('m.id_sistema',13);
+              ->where('m.id_sistema',1);
      $this->db->order_by("ur.id_usuario", "asc");
      $this->db->like('u.nombre_completo', $busca);
      $this->db->or_like('r.nombre_rol', $busca);
@@ -309,7 +309,7 @@
               ->where('u.estado',1)
               ->limit($porpagina, $segmento)
               ->group_by('ur.id_usuario')
-              ->where('m.id_sistema',13);
+              ->where('m.id_sistema',1);
      $this->db->order_by("ur.id_usuario", "asc");
      $query = $this->db->get();
      if ($query->num_rows() > 0) {
@@ -329,7 +329,7 @@
               ->join('org_modulo m','m.id_modulo=rmp.id_modulo')
               ->where('u.estado',1)
               ->group_by('u.id_usuario')
-              ->where('m.id_sistema',13);
+              ->where('m.id_sistema',1);
      $this->db->order_by("ur.id_usuario", "asc");
      $query = $this->db->get();
      if ($query->num_rows() > 0) {
@@ -445,7 +445,7 @@
               ->join('org_rol_modulo_permiso rmp','r.id_rol=rmp.id_rol')
               ->join('org_modulo m','m.id_modulo=rmp.id_modulo')
               ->group_by('r.id_rol')
-              ->where('m.id_sistema',13);
+              ->where('m.id_sistema',1);
      $this->db->order_by("r.id_rol", "asc");
      $query = $this->db->get();
      if ($query->num_rows() > 0) {
@@ -463,7 +463,7 @@
               ->join('org_modulo m','m.id_modulo=rmp.id_modulo')
               ->like('nombre_rol',$busca)
               ->group_by('r.id_rol')
-              ->where('m.id_sistema',13);
+              ->where('m.id_sistema',1);
      $this->db->order_by("r.id_rol", "asc");
      $query = $this->db->get();
      if ($query->num_rows() > 0) {
@@ -494,7 +494,7 @@
    public function obtenerDependencias($modulo) {
     $this->db->select('a.id_modulo, a.nombre_modulo, a.url_modulo, a.img_modulo')
             ->from('org_modulo a')
-            ->join('(SELECT * FROM org_modulo WHERE id_modulo = "'.$modulo.'" AND id_sistema = 13) b', 'a.dependencia = b.id_modulo')
+            ->join('(SELECT * FROM org_modulo WHERE id_modulo = "'.$modulo.'" AND id_sistema = 1) b', 'a.dependencia = b.id_modulo')
             ->order_by('a.orden', 'ASC');
 
     $query = $this->db->get();
@@ -510,9 +510,9 @@
    public function obtenerPadreModulo($mod_hijo) {
      $this->db->select('a.id_modulo, a.nombre_modulo, a.url_modulo, a.img_modulo')
             ->from('org_modulo a')
-            ->join('(SELECT * FROM org_modulo WHERE id_modulo = "'.$mod_hijo.'" AND id_sistema = 13) b', 
+            ->join('(SELECT * FROM org_modulo WHERE id_modulo = "'.$mod_hijo.'" AND id_sistema = 1) b',
                   'a.id_modulo = b.dependencia');
-                  
+
       $query = $this->db->get();
       if ($query->num_rows() > 0) {
       return  $query->row();

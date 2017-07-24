@@ -70,7 +70,7 @@
       echo "</div>";
 
 
-      if ($USER['rol'] == 'DIRECTOR ADMINISTRATIVO' || $USER['rol'] == 'ADMINISTRADOR SICBAF'
+      if ($USER['rol'] == 'DIRECTOR ADMINISTRATIVO' || $USER['rol'] == 'ADMINISTRADOR SIB'
       || $USER['rol'] == 'JEFE UNIDAD' || $USER['rol'] == 'JEFE BODEGA') {
         echo "<div class='form-group'>";
           echo form_label('Comentario:', 'com', $atriLabel);

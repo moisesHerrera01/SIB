@@ -54,7 +54,7 @@ class Detalle_retiro extends CI_Controller {
     );
     $this->table->set_template($template);
 
-    if ($USER['rol'] == 'ADMINISTRADOR SICBAF' || $USER['rol'] == 'COLABORADOR BODEGA' || $USER['rol'] == 'JEFE BODEGA' || $USER['rol'] == 'TECNICO BODEGA') {
+    if ($USER['rol'] == 'ADMINISTRADOR SIB' || $USER['rol'] == 'COLABORADOR BODEGA' || $USER['rol'] == 'JEFE BODEGA' || $USER['rol'] == 'TECNICO BODEGA') {
 
       $btn_descargo = "<div class=\"content-btn-table\"><a class=\"btn btn-default\" href='".base_url("index.php/Bodega/detalle_retiro/descargarTodos/" . $this->uri->segment(4).'/'.$this->uri->segment(5))
                        . "'>Descargar Todos</a></div>";

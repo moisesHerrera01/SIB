@@ -86,7 +86,7 @@ class Detalle_solicitud_control extends CI_Controller {
                          $actualizar = '<a class="icono icon-denegar"></a>';
                          $eliminar = '<a class="icono icon-denegar"></a>';
                        }
-                     } elseif ($USER['rol'] == 'ADMINISTRADOR SICBAF'){
+                     } elseif ($USER['rol'] == 'ADMINISTRADOR SIB'){
                        if ($nivel == 1 || $nivel == 2 || $nivel == 3){
                          $actualizar = '<a class="icono icon-actualizar" onClick="'.$onClick.'"></a>';
                          $eliminar =  '<a class="icono icon-eliminar" uri='.base_url('index.php/Bodega/Detalle_Solicitud_Control/EliminarDato/'.$det->id_detalle_solicitud_producto.'/'.$det->id_solicitud.'/'.$det->total).'></a>';
