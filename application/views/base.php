@@ -32,16 +32,17 @@
       <div class="content_footer">
         <div class="content-info-sis">
           <p class="name-sis">
-            SICBAF
+            SIB INSAFOCOOP
           </p>
           <p>
-            Copyright (c) 2016 Copyright Holder All Rights Reserved.
+            Copyright (c) 2017 Copyright Holder All Rights Reserved.
           </p>
         </div>
         <div class="conten-info-min">
           <img id="ues" src="<?= base_url("assets/image/minerva.gif")?>" alt="" width="50px"/>
           <img id="escudo" src="<?= base_url("assets/image/escudo.png")?>" alt="" />
-          &nbsp; MINISTERIO DE TRABAJO Y PREVISIÓN SOCIAL
+          <img id="escudo" src="<?= base_url("assets/image/icono.jpg")?>" alt="" />
+          &nbsp; INSTITUTO SALVADOREÑO DE FOMENTO COOPERATIVO.
         </div>
       </div>
     </div>

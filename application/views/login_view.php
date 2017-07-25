@@ -17,7 +17,7 @@
     ?>
     <div class="content">
       <div class="content-login-title">
-        <span class="title-login"><span class="icono icon-home3"> SICBAF</span></span>
+        <span class="title-login"><span class="icono icon-home3"> SIB INSAFOCOOP</span></span>
       </div>
       <div class="content-login">
       <?php
