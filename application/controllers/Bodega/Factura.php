@@ -77,11 +77,12 @@ class Factura extends CI_Controller {
               $fuente = $this->Fuentefondos_model->obtenerFuente($fact->id_fuentes);
               $seccion = $this->Solicitud_Model->obtenerSeccion($fact->id_seccion);
               $botones;
-              $onClick = "llenarFormulario('factura', ['id', 'numeroFactura', 'nombreEntrega',
-               'fechaFactura','fechaIngreso','compromiso','autocomplete1'],
-                          [$fact->id_factura, '$fact->numero_factura','$fact->nombre_entrega',
-                          '$fact->fecha_factura', '$fact->fecha_ingreso','$fact->numero_compromiso',
-                          '$fact->numero_compromiso'], false, false,
+              $onClick = "llenarFormulario('factura', ['id', 'numeroFactura','autocomplete','proveedor', 'nombreEntrega',
+               'fechaFactura','fechaIngreso','autocomplete2','seccion','autocomplete1','fuente','compromiso','orden'],
+                          [$fact->id_factura, '$fact->numero_factura','$fact->id_proveedores','$fact->id_proveedores','$fact->nombre_entrega',
+                          '$fact->fecha_factura', '$fact->fecha_ingreso','$fact->id_seccion','$fact->id_seccion','$fact->id_fuentes',
+                          '$fact->id_fuentes','$fact->numero_compromiso','$fact->orden_compra'],
+                           false, false,
                            false, 'comentario_productos', '$fact->comentario_productos')";
 
               if($fact->estado=='INGRESADA'){

@@ -170,7 +170,6 @@
         echo "<div id='content_detalle'></div>";
 
         echo form_hidden('id');
-        echo form_hidden('orden');
         echo form_submit('','Guardar', $button);
 
         echo "<button class='btn btn-warning' type='reset' value='Reset'>Limpiar</button>";

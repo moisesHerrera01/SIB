@@ -61,8 +61,8 @@ $(document).ready(function() {
   $.autocomplete({
     elemet: $('input[name=autocomplete1]'),
     url: 'index.php/Bodega/Fuentefondos/Autocomplete',
-    name: 'proveedor',
-    siguiente: 'Button',
+    name: 'fuente',
+    siguiente: 'compromiso',
     content: 'suggestions2'
   });
 //Fuentes de fondo
@@ -70,7 +70,7 @@ $(document).ready(function() {
     elemet: $('input[name=autocomplete2]'),
     url: 'index.php/Bodega/Solicitud/Autocomplete',
     name: 'seccion',
-    siguiente: 'Button',
+    siguiente: 'fuente',
     content: 'suggestions3'
   });
 
