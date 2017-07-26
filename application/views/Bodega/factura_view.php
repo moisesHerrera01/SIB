@@ -20,9 +20,16 @@
           'class' => "form-control"
       );
 
+      $prov = array(
+          'name' => 'autocomplete',
+          'placeholder' => 'Seleccione el proveedor',
+          'class' => "form-control",
+          'autocomplete' => 'off',
+      );
+
       $entrega = array(
           'name' => 'nombreEntrega',
-          'placeholder' => 'Escribe el nombre de Entrega',
+          'placeholder' => 'Escribe el nombre de la persona que entrega',
           'class' => "form-control"
       );
 
@@ -42,11 +49,30 @@
           'readonly'=>"readonly"
       );
 
-      $numcompromiso = array(
-          'name' => 'autocomplete1',
-          'placeholder' => 'Escribe Número de Compromiso',
+      $sec = array(
+          'name' => 'autocomplete2',
+          'placeholder' => 'Seleccione la sección',
           'class' => "form-control",
           'autocomplete' => 'off',
+      );
+
+      $fuentes = array(
+          'name' => 'autocomplete1',
+          'placeholder' => 'Seleccione la fuente de fondos',
+          'class' => "form-control",
+          'autocomplete' => 'off',
+      );
+
+      $comp = array(
+          'name' => 'compromiso',
+          'placeholder' => 'Ingrese el número de compromiso presupuestario',
+          'class' => "form-control"
+      );
+
+      $oc = array(
+          'name' => 'orden',
+          'placeholder' => 'Ingrese el número de la orden de compra',
+          'class' => "form-control"
       );
 
       $coment = array(
@@ -70,7 +96,16 @@
         echo "</div>";
 
         echo "<div class='form-group'>";
-          echo form_label('Nombre Entrega:', 'nombreEntrega', $atriLabel);
+          echo form_label('Proveedor:', 'prov', $atriLabel);
+          echo "<div class='col-lg-10'>";
+            echo form_input($prov);
+            echo form_hidden('proveedor');
+            echo '<div id="suggestions1" class="suggestions"></div>';
+          echo "</div>";
+        echo "</div>";
+
+        echo "<div class='form-group'>";
+          echo form_label('Entrega:', 'nombreEntrega', $atriLabel);
           echo "<div class='col-lg-10'>";
             echo form_input($entrega);
           echo "</div>";
@@ -94,11 +129,34 @@
       echo "<fieldset>";
         echo "<legend>Paso 2:</legend>";
         echo "<div class='form-group'>";
-          echo form_label('Compromiso:', 'numcompromiso', $atriLabel);
+          echo form_label('Sección:', 'sec', $atriLabel);
           echo "<div class='col-lg-10'>";
-            echo form_input($numcompromiso);
-            echo form_hidden('compromiso');
-            echo '<div id="suggestions1" class="suggestions"></div>';
+            echo form_input($sec);
+            echo form_hidden('seccion');
+            echo '<div id="suggestions3" class="suggestions"></div>';
+          echo "</div>";
+        echo "</div>";
+
+        echo "<div class='form-group'>";
+          echo form_label('Fuente:', 'fuentes', $atriLabel);
+          echo "<div class='col-lg-10'>";
+            echo form_input($fuentes);
+            echo form_hidden('fuente');
+            echo '<div id="suggestions2" class="suggestions"></div>';
+          echo "</div>";
+        echo "</div>";
+
+        echo "<div class='form-group'>";
+          echo form_label('Compromiso:', 'comp', $atriLabel);
+          echo "<div class='col-lg-10'>";
+            echo form_input($comp);
+          echo "</div>";
+        echo "</div>";
+
+        echo "<div class='form-group'>";
+          echo form_label('Orden:', 'oc', $atriLabel);
+          echo "<div class='col-lg-10'>";
+            echo form_input($oc);
           echo "</div>";
         echo "</div>";
 
@@ -112,9 +170,6 @@
         echo "<div id='content_detalle'></div>";
 
         echo form_hidden('id');
-        echo form_hidden('fuente');
-        echo form_hidden('proveedor');
-        echo form_hidden('seccion');
         echo form_hidden('orden');
         echo form_submit('','Guardar', $button);
 

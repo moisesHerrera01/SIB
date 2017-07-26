@@ -14,8 +14,7 @@ class Notificacion {
 
   function __construct() {
     $this->ci =& get_instance();
-    $this->ci->load->model(array('User_model', 'Bodega/Solicitud_Model', 'Compras/Solicitud_Compra_Model',
-                          'Compras/Compromiso_Presupuestario_Model'));
+    $this->ci->load->model(array('User_model', 'Bodega/Solicitud_Model'));
   }
 
   public function insertarNotificacion($data){
@@ -248,7 +247,7 @@ class Notificacion {
           break;
         case 2:
           # enviar a autorizante
-          $solicitud = $this->ci->Solicitud_Compra_Model->obtenerSolicitudCompleta($id_solicitud);
+          //$solicitud = $this->ci->Solicitud_Compra_Model->obtenerSolicitudCompleta($id_solicitud);
           $receptor = $this->ci->User_model->obtenerUsuarioPorEmpleado($solicitud->autorizante);
 
           if ($receptor) {
@@ -278,7 +277,7 @@ class Notificacion {
           break;
         case 3:
           # enviar a Compras
-          $solicitud = $this->ci->Solicitud_Compra_Model->obtenerSolicitudCompleta($id_solicitud);
+          //$solicitud = $this->ci->Solicitud_Compra_Model->obtenerSolicitudCompleta($id_solicitud);
           $receptor = $this->ci->User_model->obtenerCorreoUsuario($roles[6]['id_rol'], 121);
           if ($receptor) {
             $data[0]['nombre_emisor'] = $emisor->nombre_completo;
@@ -311,7 +310,7 @@ class Notificacion {
           break;
         case 4:
           # enviar a solicitante
-          $solicitud = $this->ci->Solicitud_Compra_Model->obtenerSolicitudCompleta($id_solicitud);
+          //$solicitud = $this->ci->Solicitud_Compra_Model->obtenerSolicitudCompleta($id_solicitud);
           $receptores[] = $this->ci->User_model->obtenerUsuario($this->ci->User_model->obtenerUsuarioRastreabilidad($id_solicitud, $modulo, 'INSERTA')->id_usuario);
           $receptores[] = $this->ci->User_model->obtenerUsuarioPorEmpleado($solicitud->solicitante);
 
@@ -372,7 +371,7 @@ class Notificacion {
           $receptor = $this->ci->User_model->obtenerCorreoUsuario($roles[3]['id_rol'], 72);
 
           if ($receptor) {
-            $compromiso = $this->ci->Compromiso_Presupuestario_Model->obtenerCompromisoSolicitud($id_solicitud);
+            //$compromiso = $this->ci->Compromiso_Presupuestario_Model->obtenerCompromisoSolicitud($id_solicitud);
 
             $data[0]['nombre_emisor'] = $emisor->nombre_completo;
             $data[0]['correo_emisor'] = $emisor->correo;
@@ -402,7 +401,7 @@ class Notificacion {
           break;
         case 9:
           // enviar a solicitante
-          $solicitud = $this->ci->Solicitud_Compra_Model->obtenerSolicitudCompleta($id_solicitud);
+          //$solicitud = $this->ci->Solicitud_Compra_Model->obtenerSolicitudCompleta($id_solicitud);
           //solicitante
           $receptores[] = $this->ci->User_model->obtenerUsuarioPorEmpleado($solicitud->solicitante);
           //usuario solicitante
@@ -442,7 +441,7 @@ class Notificacion {
           break;
         case 10:
           // enviar a solicitante
-          $solicitud = $this->ci->Solicitud_Compra_Model->obtenerSolicitudCompleta($id_solicitud);
+          //$solicitud = $this->ci->Solicitud_Compra_Model->obtenerSolicitudCompleta($id_solicitud);
           //solicitante
           $receptores[] = $this->ci->User_model->obtenerUsuarioPorEmpleado($solicitud->solicitante);
           //usuario solicitante
@@ -470,7 +469,7 @@ class Notificacion {
           }
           break;
         case 11:
-          $solicitud = $this->ci->Solicitud_Compra_Model->obtenerSolicitudCompleta($id_solicitud);
+          //$solicitud = $this->ci->Solicitud_Compra_Model->obtenerSolicitudCompleta($id_solicitud);
           $receptor = $this->ci->User_model->obtenerEmpleado($solicitud->asignacion_solicitud);
 
           if ($receptor) {

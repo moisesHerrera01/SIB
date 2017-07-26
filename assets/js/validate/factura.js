@@ -4,9 +4,17 @@ var reglas = {
     "numeroFactura": {
         required: true
     },
+    "autocomplete": {
+        required: true,
+        checkautocomplete: 'proveedor'
+    },
     "autocomplete1": {
         required: true,
-        checkautocomplete: 'compromiso'
+        checkautocomplete: 'fuente'
+    },
+    "autocomplete2": {
+        required: true,
+        checkautocomplete: 'seccion'
     },
     "nombreEntrega": {
       required: true,
@@ -21,8 +29,14 @@ var reglas = {
     "numeroFactura": {
       required: "El número de la factura es obligatorio."
     },
+    "autocomplete": {
+      required: "Debe seleccionar un elemento"
+    },
     "autocomplete1": {
-      required: "El Compromiso es obligatorio."
+      required: "Debe seleccionar un elemento"
+    },
+    "autocomplete2": {
+      required: "Debe seleccionar un elemento"
     },
     "nombreEntrega": {
       required: "El nombre entrega es obligatorio.",
@@ -35,59 +49,29 @@ var reglas = {
 };
 
 $(document).ready(function() {
-
-  //compromiso
+  //Proveedores
+  $.autocomplete({
+    elemet: $('input[name=autocomplete]'),
+    url: 'index.php/Bodega/Proveedores/Autocomplete',
+    name: 'proveedor',
+    siguiente: 'nombreEntrega',
+    content: 'suggestions1'
+  });
+  //Fuentes de fondo
   $.autocomplete({
     elemet: $('input[name=autocomplete1]'),
-    url: 'index.php/Compras/Compromiso_Presupuestario/autocomplete_factura',
-    name: 'compromiso',
-    siguiente: 'guardar',
-    content: 'suggestions1',
-    addfunction: function() {
-      $('#suggestions1').click(function(){
-        var id = $('input[name=compromiso]').val();
-        var content = 'content_detalle';
-        $.ajax({
-          type: 'post',
-          url: baseurl + 'index.php/Compras/Compromiso_Presupuestario/generarJsonCompromiso',
-          dataType: 'json',
-          data: { id: id },
-          beforeSend: function(){
-            $("#"+content).html("<p id='cargando' align='center' class='icono icon-spinner'></p>");
-            var angulo = 0;
-            setInterval(function(){
-                  angulo += 3;
-                 $("#cargando").rotate(angulo);
-            },10);
-          },
-          success: function(result) {
-            var info = '';
-            info += "<p>Compromiso: " + result[0].numero_compromiso + "</p>";
-            $('input[name=compromiso]').val(result[0].id_compromiso);
-            info += "<p>Orden de compra: " + result[0].numero_orden_compra + "</p>";
-            info += "<p>Monto total: $" + result[0].monto_total_oc + "</p>";
-            $('input[name=orden]').val(result[0].id_orden_compra);
-            info += "<p>Fuente Fondos: " + result[0].nombre_fuente + "</p>";
-            $('input[name=fuente]').val(result[0].id_fuentes);
-            info += "<p>Proveedor: " + result[0].nombre_proveedor + "</p>";
-            $('input[name=proveedor]').val(result[0].id_proveedores);
-            info += "<p>Requisitor: " + result[0].nombre_seccion + "</p>";
-            $('input[name=seccion]').val(result[0].id_seccion);
-            $('input[name=orden]').val(result[0].id_orden_compra);
-            var detalle = result[0].detalle_orden;
-            info += "<p>Productos:</p>";
-            info += "<ul>";
-            for (var i = 0; i < detalle.length; i++) {
-              info += "<li>";
-                info += detalle[i].id_especifico +" - "+ detalle[i].nombre_producto +", U.M: "+ detalle[i].unidad + " - Cantidad: " + detalle[i].cantidad;
-              info += "</li>";
-            }
-            info += "</ul>";
-            $('#'+content).fadeIn(300).html(info);
-          },
-        });
-      });
-    }
+    url: 'index.php/Bodega/Fuentefondos/Autocomplete',
+    name: 'proveedor',
+    siguiente: 'Button',
+    content: 'suggestions2'
+  });
+//Fuentes de fondo
+  $.autocomplete({
+    elemet: $('input[name=autocomplete2]'),
+    url: 'index.php/Bodega/Solicitud/Autocomplete',
+    name: 'seccion',
+    siguiente: 'Button',
+    content: 'suggestions3'
   });
 
 });
