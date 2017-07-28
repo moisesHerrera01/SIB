@@ -252,5 +252,30 @@ class Solicitud_retiro extends CI_Controller {
       redirect('login');
     }
   }
+
+  public function AutocompleteSeccion(){
+    $registros = '';
+    if ($this->input->is_ajax_request()) {
+      if (!($this->input->post('autocomplete') == "")) {
+          $registros = $this->Solicitud_Model->buscarSecciones($this->input->post('autocomplete'));
+      } else {
+          $registros = $this->Solicitud_Model->obtenerSecciones();
+      }
+    } else {
+          $registros = $this->Solicitud_Model->obtenerSecciones();
+    }
+
+    if ($registros == '') {
+      echo '<div id="1" class="suggest-element"><a id="conteo">No se encontraron coincidencias</a></div>';
+    }else {
+      $i = 1;
+      foreach ($registros as $sec) {
+        echo '<div id="'.$i.'" class="suggest-element" ida="seccion'.$sec->id_seccion.'"><a id="seccion'.
+        $sec->id_seccion.'" data="'.$sec->id_seccion.'"  data1="'.$sec->nombre_seccion.'" >'
+        .$sec->nombre_seccion.'</a></div>';
+        $i++;
+      }
+    }
+  }
 }
 ?>

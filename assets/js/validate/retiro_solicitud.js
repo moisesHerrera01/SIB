@@ -39,7 +39,7 @@ $(document).ready(function() {
   //seccion
   $.autocomplete({
     elemet: $('input[name=autocomplete3]'),
-    url: 'index.php/ActivoFijo/Almacenes/AutocompleteSeccion',
+    url: 'index.php/Bodega/Solicitud_retiro/AutocompleteSeccion',
     name: 'seccion',
     siguiente: 'id_usuario',
     content: 'suggestions3',
