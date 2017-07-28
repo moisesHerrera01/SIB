@@ -26,7 +26,6 @@ var reglas = {
 };
 
 $(document).ready(function() {
-  $('#autocomplete').focus(autocomplete_solicitante_seccion);
 
   //fuente de fondo
   $.autocomplete({
@@ -43,6 +42,18 @@ $(document).ready(function() {
     url: 'index.php/ActivoFijo/Almacenes/AutocompleteSeccion',
     name: 'seccion',
     siguiente: 'id_usuario',
-    content: 'suggestions3'
+    content: 'suggestions3',
+    addfunction: function() {
+      //solicitante
+      $.autocomplete({
+        elemet: $('input[name=autocomplete]'),
+        url: 'index.php/Bodega/Solicitud_retiro/AutocompleteUsuarioSeccion',
+        name: 'id_usuario',
+        siguiente: 'default',
+        content: 'suggestions1',
+        ajaxdata: {seccion: $('input[name=seccion]').val()},
+      });
+
+    }
   });
 });

@@ -32,11 +32,7 @@
           'id' => 'autocomplete',
           'placeholder' => 'Ingrese el nombre del usuario',
           'class' => "form-control",
-          'autocomplete' => 'off',
-          'uri' => 'index.php/Bodega/Solicitud_retiro/AutocompleteUsuarioSeccion',
-          'name_op' => 'id_usuario',
-          'siguiente' => 'default',
-          'content' => 'suggestions1'
+          'autocomplete' => 'off'
       );
 
       $pri= array(
