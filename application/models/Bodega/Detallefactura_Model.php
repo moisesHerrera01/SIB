@@ -109,19 +109,14 @@
       }
     }
 
-    public function obtenerEspecificosProductos($id_factura){
-      $this->db->select('p.nombre,e.id_especifico,dp.id_detalleproducto, u.nombre nombre_unidad,ds.cantidad')
+    public function obtenerEspecificosProductos(){
+      $this->db->select('p.nombre,e.id_especifico,dp.id_detalleproducto, u.nombre nombre_unidad')
                ->from('sic_producto p')
                ->join('sic_detalle_producto dp','dp.id_producto=p.id_producto')
-               ->join('sic_detalle_solicitud_compra ds','ds.id_detalleproducto=dp.id_detalleproducto')
-               ->join('sic_solicitud_compra s','s.id_solicitud_compra=ds.id_solicitud_compra')
-               ->join('sic_orden_compra oc','oc.id_solicitud_compra=s.id_solicitud_compra')
-               ->join('sic_compromiso_presupuestario cp','cp.id_orden_compra=oc.id_orden_compra')
-               ->join('sic_factura f','f.numero_compromiso=cp.id_compromiso')
                ->join('sic_especifico e','e.id_especifico=dp.id_especifico')
                ->join('sic_unidad_medida u', 'p.id_unidad_medida = u.id_unidad_medida')
-               ->order_by('dp.id_detalleproducto')
-               ->where('f.id_factura',$id_factura);
+               ->order_by('dp.id_detalleproducto desc')
+               ->limit(15);
       $query=$this->db->get();
       if ($query->num_rows()>0){
         return $query->result();
@@ -131,21 +126,15 @@
       }
     }
 
-    public function buscarEspecificosProductos($id_factura,$busca){
-      $this->db->select('p.nombre,e.id_especifico,dp.id_detalleproducto, u.nombre nombre_unidad,ds.cantidad')
+    public function buscarEspecificosProductos($busca){
+      $this->db->select('p.nombre,e.id_especifico,dp.id_detalleproducto, u.nombre nombre_unidad')
                ->from('sic_producto p')
                ->join('sic_detalle_producto dp','dp.id_producto=p.id_producto')
-               ->join('sic_detalle_solicitud_compra ds','ds.id_detalleproducto=dp.id_detalleproducto')
-               ->join('sic_solicitud_compra s','s.id_solicitud_compra=ds.id_solicitud_compra')
-               ->join('sic_orden_compra oc','oc.id_solicitud_compra=s.id_solicitud_compra')
-               ->join('sic_compromiso_presupuestario cp','cp.id_orden_compra=oc.id_orden_compra')
-               ->join('sic_factura f','f.numero_compromiso=cp.id_compromiso')
                ->join('sic_especifico e','e.id_especifico=dp.id_especifico')
                ->join('sic_unidad_medida u', 'p.id_unidad_medida = u.id_unidad_medida')
-               ->order_by('dp.id_detalleproducto')
-               ->where('f.id_factura',$id_factura)
-               ->like('e.id_especifico',$busca)
-               ->or_like('p.nombre',$busca);
+               ->order_by('dp.id_detalleproducto desc')
+               ->like('p.nombre',$busca)
+               ->or_like('e.id_especifico',$busca);
       $query=$this->db->get();
       if ($query->num_rows()>0){
         return $query->result();

@@ -226,18 +226,17 @@ class Detallefactura extends CI_Controller {
   }
 
   public function AutocompleteEspecificoProducto(){
-    $id_factura=$this->uri->segment(4);
     $USER = $this->session->userdata('logged_in');
     if($USER){
       $registros = '';
       if ($this->input->is_ajax_request()) {
         if (!($this->input->post('autocomplete') == "")) {
-            $registros = $this->Detallefactura_Model->buscarEspecificosProductos($id_factura, $this->input->post('autocomplete'));
+            $registros = $this->Detallefactura_Model->buscarEspecificosProductos($this->input->post('autocomplete'));
         } else {
-            $registros = $this->Detallefactura_Model->obtenerEspecificosProductos($id_factura);
+            $registros = $this->Detallefactura_Model->obtenerEspecificosProductos();
         }
       } else {
-            $registros = $this->Detallefactura_Model->obtenerEspecificosProductos($id_factura);
+            $registros = $this->Detallefactura_Model->obtenerEspecificosProductos();
       }
       if ($registros == '') {
         echo '<div id="1" class="suggest-element"><a id="conteo">No se encontraron coincidencias</a></div>';
@@ -245,8 +244,7 @@ class Detallefactura extends CI_Controller {
         $i = 1;
         foreach ($registros as $producto) {
             echo '<div id="'.$i.'" class="suggest-element" ida="producto'.$producto->id_detalleproducto.'"><a id="producto'.
-            $producto->id_detalleproducto.'" data="'.$producto->id_detalleproducto.'"  data1="'.$producto->id_especifico.' - '.$producto->nombre.' - '.$producto->nombre_unidad.'"
-             data2="'.$producto->cantidad.'" >'
+            $producto->id_detalleproducto.'" data="'.$producto->id_detalleproducto.'"  data1="'.$producto->id_especifico.' - '.$producto->nombre.' - '.$producto->nombre_unidad.'">'
             .$producto->id_especifico.' - '.$producto->nombre.' - '.$producto->nombre_unidad.'</a></div>';
             $i++;
         }

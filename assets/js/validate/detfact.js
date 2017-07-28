@@ -29,11 +29,9 @@ $(document).ready(function() {
   //producto
   $.autocomplete({
     elemet: $('input[name=autocomplete]'),
-    url: $('input[name=autocomplete]').attr('uri'),
+    url: 'index.php/Bodega/Detallefactura/AutocompleteEspecificoProducto',
     name: 'producto',
-    asociacion1: 'cantidad',
     siguiente: 'cantidad',
     content: 'suggestions'
   });
-
 });

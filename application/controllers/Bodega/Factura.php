@@ -79,8 +79,8 @@ class Factura extends CI_Controller {
               $botones;
               $onClick = "llenarFormulario('factura', ['id', 'numeroFactura','autocomplete','proveedor', 'nombreEntrega',
                'fechaFactura','fechaIngreso','autocomplete2','seccion','autocomplete1','fuente','compromiso','orden'],
-                          [$fact->id_factura, '$fact->numero_factura','$fact->id_proveedores','$fact->id_proveedores','$fact->nombre_entrega',
-                          '$fact->fecha_factura', '$fact->fecha_ingreso','$fact->id_seccion','$fact->id_seccion','$fact->id_fuentes',
+                          [$fact->id_factura, '$fact->numero_factura','$fact->nombre_proveedor','$fact->id_proveedores','$fact->nombre_entrega',
+                          '$fact->fecha_factura', '$fact->fecha_ingreso','$fact->nombre_seccion','$fact->id_seccion','$fact->nombre_fuente',
                           '$fact->id_fuentes','$fact->numero_compromiso','$fact->orden_compra'],
                            false, false,
                            false, 'comentario_productos', '$fact->comentario_productos')";
@@ -242,13 +242,10 @@ class Factura extends CI_Controller {
   public function Liquidar(){
       $id = $this->uri->segment(4);
       if($this->Factura_Model->retornarEstado($id)=='INGRESADA'){
-        if($this->Factura_Model->validarMontoTotalFactura($id)){
         $correlativo = $this->Factura_Model->obtenerCorrelativoFuente($this->uri->segment(5));
         $this->Factura_Model->liquidar($id,$correlativo);
         redirect('/Bodega/kardex/insertar?controller=factura&&id='.$id);
-      }else{
-        redirect('/Bodega/factura/index/valida_monto');
-      }}else{
+        }else{
         redirect('/Bodega/factura/index/fact_liquidada');
       }
   }

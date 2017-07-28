@@ -91,7 +91,7 @@ class Detalle_solicitud_control extends CI_Controller {
                          $actualizar = '<a class="icono icon-actualizar" onClick="'.$onClick.'"></a>';
                          $eliminar =  '<a class="icono icon-eliminar" uri='.base_url('index.php/Bodega/Detalle_Solicitud_Control/EliminarDato/'.$det->id_detalle_solicitud_producto.'/'.$det->id_solicitud.'/'.$det->total).'></a>';
                        }
-                       if ($nivel == 4 || $nivel== 9){
+                       if ($nivel==0 || $nivel == 4 || $nivel== 9){
                          $actualizar = '<a class="icono icon-denegar"></a>';
                          $eliminar = '<a class="icono icon-denegar"></a>';
                        }

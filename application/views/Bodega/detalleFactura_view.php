@@ -19,7 +19,6 @@
           'placeholder' => 'Escribe Producto',
           'class' => "form-control",
           'autocomplete' => 'off',
-          'uri' => 'index.php/Bodega/Detallefactura/AutocompleteEspecificoProducto/'.$id_factura,
       );
 
       $cant = array(

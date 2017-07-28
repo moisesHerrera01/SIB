@@ -504,5 +504,20 @@
            return FALSE;
        }
      }
+
+     public function obtenerEspecifico($id){
+               $this->db->select('dp.id_detalleproducto,e.id_especifico,p.nombre')
+               ->from('sic_detalle_producto dp')
+               ->join('sic_especifico e','e.id_especifico=dp.id_especifico')
+               ->join('sic_producto p','p.id_producto=dp.id_producto')
+               ->where('dp.id_detalleproducto',$id);
+         $query = $this->db->get();
+         if ($query->num_rows() > 0) {
+         return $query->row();
+         }
+         else {
+          return FALSE;
+         }
+       }
 }
 ?>

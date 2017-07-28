@@ -11,7 +11,7 @@ class Detalle_solicitud_producto extends CI_Controller {
     $this->load->helper(array('form', 'paginacion'));
     $this->load->library('table');
     $this->load->model(array('Bodega/Detalle_solicitud_producto_model', 'Bodega/Producto','Bodega/Solicitud_Model',
-    'Bodega/Fuentefondos_model','Bodega/UnidadMedida','Compras/Detalle_solicitud_compra_model', 'Bodega/Kardex_model'));
+    'Bodega/Fuentefondos_model','Bodega/UnidadMedida', 'Bodega/Kardex_model'));
   }
 
   public function index(){
@@ -169,7 +169,7 @@ class Detalle_solicitud_producto extends CI_Controller {
           redirect('/Bodega/Detalle_solicitud_producto/index/'.$data['id_solicitud'].'/update');
       }else{
         $detalles=$this->Detalle_solicitud_producto_model->obtenerDetallesSolicitud($data['id_solicitud']);
-        $detalle=$this->Detalle_solicitud_compra_model->obtenerEspecifico($data['id_detalleproducto']);
+        $detalle=$this->Solicitud_Model->obtenerEspecifico($data['id_detalleproducto']);
         $i='0';
         foreach ($detalles as $det) {
           if($det->nombre==$detalle->nombre){

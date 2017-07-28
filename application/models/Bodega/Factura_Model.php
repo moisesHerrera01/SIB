@@ -75,17 +75,23 @@
           }
       }
 
-    public function buscarFacturas($busca){
-      $this->db->like('numero_factura', $busca);
-      $this->db->or_like('fecha_ingreso', $busca);
-      $query = $this->db->get('sic_factura', 10);
-      if ($query->num_rows() > 0) {
-          return  $query->result();
+      public function buscarFacturas($busca){
+        $this->db->select('f.id_factura,f.numero_factura,f.id_proveedores,f.nombre_entrega,f.fecha_factura,f.fecha_ingreso,f.id_fuentes,
+        f.numero_compromiso,f.orden_compra,f.id_seccion,f.total,f.estado,f.hora,f.correlativo_fuente_fondo,f.comentario_productos,p.nombre_proveedor,
+        fu.nombre_fuente,s.nombre_seccion')
+                 ->from('sic_factura f')
+                 ->join('sic_proveedores p','f.id_proveedores=p.id_proveedores')
+                 ->join('sic_fuentes_fondo fu','f.id_fuentes=fu.id_fuentes')
+                 ->join('org_seccion s','s.id_seccion=f.id_seccion')
+                 ->order_by('f.id_factura','desc')
+                 ->like('f.numero_factura',$busca);
+       $query=$this->db->get();
+       if ($query->num_rows()>0) {
+         return $query->result();
+       }else {
+         return FALSE;
+       }
       }
-      else {
-          return FALSE;
-      }
-    }
 
     public function obtenerTotalFactura($id){
         $this->db->where('id_factura',$id);
@@ -143,15 +149,22 @@
       return $this->db->count_all('sic_factura');
     }
 
-     public function obtenerFacturasLimit($porpagina, $segmento){
-       $this->db->order_by("id_factura", "desc");
-       $query = $this->db->get('sic_factura', $porpagina, $segmento);
-       if ($query->num_rows() > 0) {
-           return  $query->result();
-       }
-       else {
-           return FALSE;
-       }
+     public function obtenerFacturasLimit($porpagina,$segmento){
+       $this->db->select('f.id_factura,f.numero_factura,f.id_proveedores,f.nombre_entrega,f.fecha_factura,f.fecha_ingreso,f.id_fuentes,
+       f.numero_compromiso,f.orden_compra,f.id_seccion,f.total,f.estado,f.hora,f.correlativo_fuente_fondo,f.comentario_productos,p.nombre_proveedor,
+       fu.nombre_fuente,s.nombre_seccion')
+                ->from('sic_factura f')
+                ->join('sic_proveedores p','f.id_proveedores=p.id_proveedores')
+                ->join('sic_fuentes_fondo fu','f.id_fuentes=fu.id_fuentes')
+                ->join('org_seccion s','s.id_seccion=f.id_seccion')
+                ->order_by('f.id_factura','desc')
+                ->limit($porpagina,$segmento);
+      $query=$this->db->get();
+      if ($query->num_rows()>0) {
+        return $query->result();
+      }else {
+        return FALSE;
+      }
      }
 
      public function obtenerDatosFactura($id){
