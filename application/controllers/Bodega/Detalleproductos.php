@@ -37,7 +37,7 @@ class DetalleProductos extends CI_Controller {
         'table_open' => '<table class="table table-striped table-bordered">'
     );
     $this->table->set_template($template);
-    $this->table->set_heading('Código Específico','Nombre del Producto','Modificar', 'Eliminar');
+    $this->table->set_heading('Código Específico','Número del producto','Nombre del Producto','Modificar', 'Eliminar');
 
     /*
     * Filtro a la BD
@@ -72,7 +72,7 @@ class DetalleProductos extends CI_Controller {
           $onClick = "llenarFormulario('detalleProducto', ['id_especifico','id_producto','autocomplete','id_pro'], ['$nom_espe', '$detalle->id_producto','$nom_pro','$detalle->id_producto'])";
 
           $nombre_producto = $this->Producto->obtenerProducto($detalle->id_producto);
-          $this->table->add_row($detalle->id_especifico, $nombre_producto,
+          $this->table->add_row($detalle->id_especifico,$detalle->numero_producto, $nombre_producto,
                           //form_button($btn_act), $form_el,
                           '<a class="icono icon-actualizar" onClick="'.$onClick.'"></a>',
                           '<a class="icono icon-eliminar" uri='.base_url('index.php/Bodega/Detalleproductos/EliminarDato/'.$detalle->id_especifico.'/'.$detalle->id_producto).'></a>');

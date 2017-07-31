@@ -166,7 +166,7 @@
 
     public function obtenerDetalleProductosLimit($porpagina, $segmento, $id){
       $this->db->where('id_especifico',$id);
-      $this->db->order_by("id_especifico", "asc");
+      $this->db->order_by("id_detalleproducto", "asc");
       $query = $this->db->get('sic_detalle_producto', $porpagina, $segmento);
       if ($query->num_rows() > 0) {
           return  $query->result();
