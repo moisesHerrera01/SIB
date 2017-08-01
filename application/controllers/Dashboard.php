@@ -51,32 +51,11 @@ class Dashboard extends CI_Controller {
         case 'USUARIO SIB':
           $data['dhb'] = $this->load->view('dashboard/dhb_usuario', '', true);
           break;
-        case 'JEFE UNIDAD':
-          $data['dhb'] = $this->load->view('dashboard/dhb_jefe_unidad', '', true);
-          break;
-        case 'JEFE COMPRAS':
-          $data['dhb'] = $this->load->view('dashboard/dhb_jefe_compra', '', true);
-          break;
-        case 'DIRECTOR ADMINISTRATIVO':
-          $data['dhb'] = $this->load->view('dashboard/dhb_director_administrativo', '', true);
-          break;
         case 'COLABORADOR BODEGA':
           $data['dhb'] = $this->load->view('dashboard/dhb_colaborador_bodega', '', true);
           break;
-        case 'COLABORADOR COMPRAS':
-          $data['dhb'] = $this->load->view('dashboard/dhb_colaborador_compra', '', true);
-          break;
-        case 'JEFE UACI':
-          $data['dhb'] = $this->load->view('dashboard/dhb_jefe_uaci', '', true);
-          break;
-        case 'COLABORADOR UACI':
-          $data['dhb'] = $this->load->view('dashboard/dhb_colaborador_uaci', '', true);
-          break;
-        case 'JEFE AF':
-          $data['dhb'] = $this->load->view('dashboard/dhb_jefe_af', '', true);
-          break;
         default:
-          $data['dhb'] = "";
+          $data['dhb'] = $this->load->view('dashboard/dhb_usuario', '', true);
           break;
       }
 
@@ -159,17 +138,6 @@ class Dashboard extends CI_Controller {
   public function obtenerSolicitudesCompraBodegaUsuario() {
     $cant_meses_compra = $this->cant_meses;
     $USER = $this->session->userdata('logged_in');
-    $datos = $this->Solicitud_Compra_Model->obtenerSolicitudesCompraUserDHB($USER['id_seccion'], date("Y"));
-
-      if ($datos) {
-        $mes = 0;
-        foreach ($datos as $dato) {
-          $ar_meses = explode("-", $dato->fecha_solicitud_compra);
-          $mes = $ar_meses[1];
-          $cant = $cant_meses_compra[$this->meses[$mes - 1]] + 1;
-          $cant_meses_compra[$this->meses[$mes - 1]] = $cant;
-      }
-    }
 
     $cant_meses_bodega = $this->cant_meses;
 
