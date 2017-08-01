@@ -57,7 +57,7 @@
           <span style="font-size:0.5px">PAM</span>
           <img id="escudo" src="<?= base_url("assets/image/escudo.png")?>" alt="" />          
           <img id="escudo" src="<?= base_url("assets/image/icono.jpg")?>" alt="" />
-          &nbsp; INSTITUTO SALVADOREÑO DE FOMENTO COOPERATIVO.
+          <div class="nombre-inst">&nbsp; INSTITUTO SALVADOREÑO DE FOMENTO COOPERATIVO.</div>
         </div>
       </div>
     </div>
